@@ -1,5 +1,5 @@
 
-local targetCol
+local targetCol = color_white
 
 local function LerpColor(frac,from,to)
 	local col = Color(
@@ -13,7 +13,7 @@ end
 
 local function default(x,y,time)
 
-	targetCol = LerpColor(0.2,cursorInfo[i],color_white)
+	targetCol = LerpColor(0.2,targetCol,color_white)
 	surface.SetDrawColor(targetCol)
 	surface.DrawRect(x,y,12,3)
 	surface.DrawRect(x,y,3,12)
@@ -21,7 +21,7 @@ end
 
 local function left(x,y,time)
 
-	targetCol = LerpColor(0.2,cursorInfo[i],Color(162,62,62))
+	targetCol = LerpColor(0.2,targetCol,Color(162,62,62))
 	surface.SetDrawColor(targetCol)
 	surface.DrawRect(x,y,12,3)
 	surface.DrawRect(x,y,3,12)
