@@ -1,9 +1,5 @@
-local cursorInfo = {}
 
-for i=1, 12 do
-
-	cursorInfo[i] = color_white
-end
+local targetCol
 
 local function LerpColor(frac,from,to)
 	local col = Color(
@@ -17,24 +13,18 @@ end
 
 local function default(x,y,time)
 
-	for i=1, 12 do
-
-		cursorInfo[i] = LerpColor(0.2,cursorInfo[i],color_white)
-		surface.SetDrawColor(cursorInfo[i])
-		surface.DrawRect(x+i,y,1,3)
-		surface.DrawRect(x,y+i,3,1)
-	end
+	targetCol = LerpColor(0.2,cursorInfo[i],color_white)
+	surface.SetDrawColor(targetCol)
+	surface.DrawRect(x,y,12,3)
+	surface.DrawRect(x,y,3,12)
 end
 
 local function left(x,y,time)
 
-	for i=1, 12 do
-
-		cursorInfo[i] = LerpColor(0.2,cursorInfo[i],Color(162,62,62))
-		surface.SetDrawColor(cursorInfo[i])
-		surface.DrawRect(x+i,y,1,3)
-		surface.DrawRect(x,y+i,3,1)
-	end
+	targetCol = LerpColor(0.2,cursorInfo[i],Color(162,62,62))
+	surface.SetDrawColor(targetCol)
+	surface.DrawRect(x,y,12,3)
+	surface.DrawRect(x,y,3,12)
 end
 
 cursor.register(default,CURSOR_DEFAULT)
