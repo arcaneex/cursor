@@ -1,6 +1,6 @@
-local function cursorDraw()
+local function cursorDraw(force)
 
-	if not cursor.mouseEnabled then return end
+	if not force and not cursor.mouseEnabled then return end
 
 	local left,right = input.IsMouseDown(MOUSE_LEFT),input.IsMouseDown(MOUSE_RIGHT)
 
@@ -15,6 +15,11 @@ local function cursorDraw()
 
 		cursor['default'](x,y,CurTime())
 	end
+end
+
+function cursor.draw()
+
+	cursorDraw(true)
 end
 
 local function cursorThink()
